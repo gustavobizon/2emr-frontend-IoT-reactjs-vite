@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import SensorDataChart from './SensorDataChart.jsx';
+import BotaoPausarReiniciarServico from './BotaoPausarReiniciarServico'; // Importe o novo botão
 import BotaoLimparDados from './BotaoLimparDados';
 import HomePage from './HomePage';
 import RegisterForm from './RegisterForm';
@@ -23,10 +24,14 @@ function App() {
             <>
               <h1>Dados do Sensor</h1>
               <SensorDataChart />
-              <BotaoLimparDados />
+              <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+                <BotaoLimparDados />
+                <BotaoPausarReiniciarServico /> {/* Novo botão */}
+              </div>
             </>
-          ) : <Navigate to="/login" />} />
-
+          ) : (
+            <Navigate to="/login" />
+          )} />
           {/* Páginas de Login e Registro */}
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
